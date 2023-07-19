@@ -14,7 +14,6 @@ function createBoard() {
 }
 
 const chessBoard = createBoard();
-console.log(chessBoard);
 
 function Node(row, col, dis) {
   return {
@@ -24,7 +23,6 @@ function Node(row, col, dis) {
   };
 }
 
-// 1. learn how to make the visited set only with unique values
 const moves = [
   [2, 1],
   [1, 2],
@@ -54,24 +52,19 @@ const getNeighbors = (curRow, curCol) => {
 };
 
 function moveKnight(start, end) {
-  // all possible moves
-
   let queue = [[start]];
   const visited = new Set();
 
   while (queue.length > 0) {
-    // remove node
     const path = queue.shift();
     const current = path[path.length - 1];
     const row = current[0];
     const col = current[1];
 
-    // process node
     if (row === end[0] && col === end[1]) {
       return path;
     }
 
-    // add the steps
     for (const el of getNeighbors(row, col)) {
       const [x, y] = el;
 
@@ -84,4 +77,4 @@ function moveKnight(start, end) {
   }
 }
 
-console.log(moveKnight([7, 0], [0, 7]));
+console.log(moveKnight([7, 0], [6, 2]));
