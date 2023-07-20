@@ -1,0 +1,31 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  background-color: #262421;
+}
+
+#chessBoard {
+  background-color: #5d9948;
+  margin: 10rem auto;
+  border: 1px solid #5d9948;
+  height: 70rem;
+  width: 70rem;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+#chessBoard .sq {
+  height: 100%;
+  width: 100%;
+}

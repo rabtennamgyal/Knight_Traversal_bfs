@@ -1,4 +1,6 @@
 // create a board
+const chessBoardDom = document.getElementById("chessBoard");
+
 function createBoard() {
   const arr = [];
 
@@ -11,6 +13,12 @@ function createBoard() {
   }
 
   return arr;
+}
+
+for (let i = 1; i <= 64; i++) {
+  const sq = document.createElement("div");
+  sq.classList.add("sq");
+  chessBoardDom.appendChild(sq);
 }
 
 const chessBoard = createBoard();
@@ -77,4 +85,25 @@ function moveKnight(start, end) {
   }
 }
 
-console.log(moveKnight([7, 0], [6, 2]));
+moveKnight([7, 0], [6, 2]);
+
+const squares = document.querySelectorAll(".sq");
+
+let state = true;
+let nums = [8, 16, 24, 32, 40, 48, 56, 64];
+
+for (let i = 0; i <= 63; i++) {
+  nums.forEach((el) => {
+    if (i === el) {
+      state = !state;
+    }
+  })
+
+  if (state) {
+    squares[i].style.backgroundColor = "#f3ffcf";
+    state = false;
+  } else {
+    squares[i].style.backgroundColor = "#81b64c";
+    state = true;
+  }
+}
