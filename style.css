@@ -14,6 +14,7 @@ body {
 }
 
 #chessBoard {
+  cursor: grab;
   background-color: #5d9948;
   margin: 10rem auto;
   border: 1px solid #5d9948;
