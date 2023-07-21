@@ -1,5 +1,86 @@
-// create a board
+// below are the codes relating to the dom
 const chessBoardDom = document.getElementById("chessBoard");
+
+for (let i = 1; i <= 64; i++) {
+  const sq = document.createElement("div");
+  sq.classList.add("sq");
+  chessBoardDom.appendChild(sq);
+}
+
+const squares = document.querySelectorAll(".sq");
+
+let state = true;
+let nums = [8, 16, 24, 32, 40, 48, 56, 64];
+
+for (let i = 0; i <= 63; i++) {
+  nums.forEach((el) => {
+    if (i === el) {
+      state = !state;
+    }
+  });
+
+  if (state) {
+    squares[i].style.backgroundColor = "#f3ffcf";
+    state = false;
+  } else {
+    squares[i].style.backgroundColor = "#81b64c";
+    state = true;
+  }
+}
+
+let cloneSqs = Array.from(squares);
+let arrs = [];
+
+let x = 0;
+let y = 0;
+
+while (cloneSqs.length !== 0) {
+  let arr = cloneSqs.splice(0, 8);
+
+  arrs.push(arr);
+}
+
+for (let i = 0; i < arrs.length; i++) {
+  let cur = arrs[i];
+  let x = i;
+  let y = 0;
+
+  cur.forEach((el) => {
+    el.setAttribute("coords", `${x}, ${y}`);
+    y = y + 1;
+  });
+}
+
+// below are codes relating to the actual algorithms
+function moveKnightDom(end) {
+  // make a function to clear the knight from the dom after it 
+  // already visited the squares.
+
+
+  let knight = "./assets/knight.svg";
+
+  // creating a div for the knight
+  let createDomNode = document.createElement("div");
+  createDomNode.classList.add("knight");
+  // creating the img element
+  let img = document.createElement("img");
+  img.src = knight;
+
+  createDomNode.appendChild(img);
+
+  let target;
+  squares.forEach((el) => {
+    let coords = el.getAttribute("coords").split(",");
+    let x = Number(coords[0]);
+    let y = Number(coords[1]);
+
+    if (x === end[0] && y === end[1]) {
+      target = el;
+    }
+  });
+
+  target.appendChild(createDomNode);
+}
 
 function createBoard() {
   const arr = [];
@@ -15,21 +96,7 @@ function createBoard() {
   return arr;
 }
 
-for (let i = 1; i <= 64; i++) {
-  const sq = document.createElement("div");
-  sq.classList.add("sq");
-  chessBoardDom.appendChild(sq);
-}
-
 const chessBoard = createBoard();
-
-function Node(row, col, dis) {
-  return {
-    row,
-    col,
-    dis,
-  };
-}
 
 const moves = [
   [2, 1],
@@ -70,6 +137,13 @@ function moveKnight(start, end) {
     const col = current[1];
 
     if (row === end[0] && col === end[1]) {
+      // create the knight ( get the image )
+
+      // append the knight on the board
+      path.forEach((el) => {
+        moveKnightDom(el)
+      })
+
       return path;
     }
 
@@ -85,25 +159,4 @@ function moveKnight(start, end) {
   }
 }
 
-moveKnight([7, 0], [6, 2]);
-
-const squares = document.querySelectorAll(".sq");
-
-let state = true;
-let nums = [8, 16, 24, 32, 40, 48, 56, 64];
-
-for (let i = 0; i <= 63; i++) {
-  nums.forEach((el) => {
-    if (i === el) {
-      state = !state;
-    }
-  })
-
-  if (state) {
-    squares[i].style.backgroundColor = "#f3ffcf";
-    state = false;
-  } else {
-    squares[i].style.backgroundColor = "#81b64c";
-    state = true;
-  }
-}
+console.log(moveKnight([7, 0], [0, 0]));

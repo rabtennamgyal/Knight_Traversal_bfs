@@ -29,4 +29,11 @@ body {
 #chessBoard .sq {
   height: 100%;
   width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+#chessBoard .sq .knight {
+  height: 80%;
+  width: 80%;
 }
