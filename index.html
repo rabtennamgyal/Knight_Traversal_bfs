@@ -6,11 +6,31 @@
     <title>Document</title>
     <link href="style.css" type="text/css" rel="stylesheet">
   <body>
-    <!-- This div will contain the chessboard -->
-    <div class="chessBoard" id="chessBoard">
+    <div class="content">
+      <div class="controls">
+        <form action="">
+          <label for="start">Start Position:</label>
+          <input type="text" id="start" name="start" placeholder=" ex: 23">
 
+          <label for="end">End Position:</label>
+          <input type="text" id="end" name="end" placeholder=" ex: 77">
+
+          <div class="btnDiv">
+            <button class='startGame' id='btn'>
+              Submit
+            </button>
+  
+            <button class="clearGame" id="btn">
+              Clear
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="chessBoard" id="chessBoard">
+
+      </div>
     </div>
-
     <script src="app.js"></script>
   </body>
 </html>

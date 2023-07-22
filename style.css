@@ -13,6 +13,62 @@ body {
   background-color: #262421;
 }
 
+.content {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.controls {
+  display: grid;
+  place-items: center;
+}
+
+.controls form {
+  height: 30%;
+  width: 50%;
+  display: grid;
+  place-items: center;
+}
+
+form label {
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  margin: 1rem 0;
+  justify-self: start;
+}
+
+form input {
+  outline: none;
+  height: 30px;
+  width: 100%;
+  font-size: 2rem;
+}
+
+form .btnDiv {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+form button {
+  margin: 0 1rem;
+  background-color: #5d9948;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  width: 100px;
+  border-radius: 3rem;
+  outline: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+form button:hover {
+  transition: 0.7s ease-in-out;
+  transform: scale(1.1);
+}
+
 #chessBoard {
   cursor: grab;
   background-color: #5d9948;

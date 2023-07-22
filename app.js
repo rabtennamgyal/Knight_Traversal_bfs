@@ -53,9 +53,8 @@ for (let i = 0; i < arrs.length; i++) {
 
 // below are codes relating to the actual algorithms
 function moveKnightDom(end) {
-  // make a function to clear the knight from the dom after it 
+  // make a function to clear the knight from the dom after it
   // already visited the squares.
-
 
   let knight = "./assets/knight.svg";
 
@@ -137,13 +136,11 @@ function moveKnight(start, end) {
     const col = current[1];
 
     if (row === end[0] && col === end[1]) {
-      // create the knight ( get the image )
-
-      // append the knight on the board
       path.forEach((el) => {
-        moveKnightDom(el)
-      })
+        moveKnightDom(el);
+      });
 
+      console.log(path);
       return path;
     }
 
@@ -159,4 +156,31 @@ function moveKnight(start, end) {
   }
 }
 
-console.log(moveKnight([7, 0], [0, 0]));
+// retrieving the values from the dom
+
+const submit = document.querySelector(".startGame");
+const clear = document.querySelector(".clearGame");
+
+submit.addEventListener("click", (e) => {
+  e.preventDefault();
+  const start = document.getElementById("start").value.split("");
+  const end = document.getElementById("end").value.split("");
+
+  let x = start.map((el) => Number(el));
+  let y = end.map((el) => Number(el));
+
+  moveKnight(x, y);
+
+  document.getElementById("start").value = "";
+  document.getElementById("end").value = "";
+
+});
+
+clear.addEventListener("click", () => {
+  squares.forEach((el) => {
+    if (el.hasChildNodes()) {
+      let child = el.lastElementChild;
+      el.removeChild(child);
+    }
+  })
+});
