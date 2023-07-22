@@ -173,7 +173,6 @@ submit.addEventListener("click", (e) => {
 
   document.getElementById("start").value = "";
   document.getElementById("end").value = "";
-
 });
 
 clear.addEventListener("click", () => {
@@ -182,5 +181,5 @@ clear.addEventListener("click", () => {
       let child = el.lastElementChild;
       el.removeChild(child);
     }
-  })
+  });
 });
